@@ -7,7 +7,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.IOException;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -23,9 +25,11 @@ public class MainActivity extends AppCompatActivity {
             throws java.io.IOException {
 
         EditText infile = findViewById(R.id.edit_infile);
+        EditText outfile = findViewById(R.id.edit_outfile);
         TextView output = findViewById(R.id.text_main);
 
         String filename = infile.getText().toString();
+        String outfilename = outfile.getText().toString();
 
         Scanner file = new Scanner(getAssets().open(filename));
 
@@ -54,6 +58,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         output.setText(result);
+
+        File outfileFile = new File(getExternalFilesDir(null), outfilename);
+
+        PrintWriter writer = new PrintWriter(
+                new FileOutputStream(outfileFile)
+        );
+
+        for (int i = 0; i < num_vals; i++) {
+            writer.printf("%.2f%n", a[i]);
+        }
+
+        writer.close();
     }
 
     public void floor_it(double[] a, int num_vals) {
