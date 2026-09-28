@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">My L1</string>
+
+    <string name="edit_infile">Enter the name of the input file</string>
+    <string name="button_fd">Floor &amp; Display</string>
+    <string name="text_main">Status.</string>
+
+</resources>
